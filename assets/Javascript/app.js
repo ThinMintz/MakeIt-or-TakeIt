@@ -1,11 +1,12 @@
 $(function(){
-console.log("test");
+
     var appID, appKey;
 
     function recipeSearch() {
         appID = "_app_id=3123c164", appKey = "_app_key=0a453b6219d75c4f9b5bd7deafcd8724";
-        let cuisine = "Italian", ingredients = "beef",
-        queryURL = `http://api.yummly.com/v1/api/recipes?${appID}&${appKey}&requirePictures=true&maxResult=4&allowedCuisine[]=cuisine^cuisine-${cuisine}&allowedIngredient[]=${ingredients}`;
+
+        let cuisine = "Italian", ingredients = "beef", start = ~~(Math.random() * 100),
+        queryURL = `http://api.yummly.com/v1/api/recipes?${appID}&${appKey}&requirePictures=true&maxResult=4&start=${start}&allowedCuisine[]=cuisine^cuisine-${cuisine}&allowedIngredient[]=${ingredients}`;
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -30,6 +31,7 @@ console.log("test");
     }
 
     $(document).on("click", ".btn", function() {
+        $("#recipeHome").empty();
         recipeSearch();
     });
 
