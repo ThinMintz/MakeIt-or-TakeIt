@@ -7,23 +7,21 @@
 
 	<title>Make it or Take it!</title>
 
-	<link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
+	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+	<link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
+	
 </head>
 <body>
-	<div class="jumbotron">
-  		<div class="container">
-    	<h1>Make it or Take it!</h1>
-  		</div>
-	</div>
-
-	<div class="container">
-		<div class="row">
-			<div class= "col-md-12">
+	<div class="row">
+		<div class="col-md-4">
+<!-- 			<h3 class="text-center">Make it or Take it!</h3> -->
+			<span class="text-center">Make it or Take it!</span>
+		</div>
+		<div class= "col-md-4">
 				<select class="form-control">
 				  <option>American</option>
 				  <option>Asian</option>
@@ -51,23 +49,32 @@
 				  <option>Swedish</option>
 				  <option>Thai</option>
 				</select>
-			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-12">
+		<div class="col-md-4">
 			    <div class="input-group">
-			      <input type="text" class="form-control" id="typeInCuisine" placeholder="Can't find your cuisine above, type it here!">
+			      <input type="text" class="form-control" id="typeInCuisine" placeholder="Can't find your cuisine, type it here!">
 			      <span class="input-group-btn">
-			        <button class="btn btn-default" type="button">Go!</button>
+			      <button class="btn btn-default" type="button">Go!</button>
 			      </span>
-				</div>
-			</div>
+				</div> 
+		</div>
+	</div> <!-- row -->
 
+	<div class="jumbotron">
+  		<div class="container">
+    	<h1>Make it or Take it!</h1>
+  		</div>
+	</div>
+	<div class= "row">
 			<div class="col-md-6">
  				<button class="btn btn-primary" type="submit">Let's Make it!</button>
-			</div>
-		</div>
-	</div>
+			</div> <!-- col-md-6 -->
+		
+	</div>		
+
+
+
+
 
 	<div class="container-fluid text-center">
 		<div class="row">
