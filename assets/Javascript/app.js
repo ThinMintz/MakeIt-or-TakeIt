@@ -4,14 +4,13 @@ $(function(){
 
     function recipeSearch() {
         appID = "_app_id=3123c164", appKey = "_app_key=0a453b6219d75c4f9b5bd7deafcd8724";
-
         let cuisine = "Italian", ingredients = "beef", start = ~~(Math.random() * 100),
         queryURL = `http://api.yummly.com/v1/api/recipes?${appID}&${appKey}&requirePictures=true&maxResult=4&start=${start}&allowedCuisine[]=cuisine^cuisine-${cuisine}&allowedIngredient[]=${ingredients}`;
         $.ajax({
             url: queryURL,
             method: "GET"
         }).done(function(response) {
-            var result = response.matches;
+            let result = response.matches;
             for (let index of result) {
                 recipeReturn(index.id)
             }
@@ -19,7 +18,7 @@ $(function(){
     }
 
     function recipeReturn(ID) {
-        let recipeID = ID, queryURL = `http://api.yummly.com/v1/api/recipe/${ID}?${appID}&${appKey}`;
+        let queryURL = `http://api.yummly.com/v1/api/recipe/${ID}?${appID}&${appKey}`;
         $.ajax({
             url: queryURL,
             method: "GET"
