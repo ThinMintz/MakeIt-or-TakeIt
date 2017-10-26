@@ -1,11 +1,10 @@
 $(function(){
 
-    var appID, appKey;
+    var yummlyID = "_app_id=3123c164", yummlyKey = "_app_key=0a453b6219d75c4f9b5bd7deafcd8724";
 
-    function recipeSearch() {
-        appID = "_app_id=3123c164", appKey = "_app_key=0a453b6219d75c4f9b5bd7deafcd8724";
-        let cuisine = "Italian", ingredients = "beef", start = ~~(Math.random() * 100),
-        queryURL = `http://api.yummly.com/v1/api/recipes?${appID}&${appKey}&requirePictures=true&maxResult=4&start=${start}&allowedCuisine[]=cuisine^cuisine-${cuisine}&allowedIngredient[]=${ingredients}`;
+    function recipeSearch(cuisine) {
+        let queryURL = `http://api.yummly.com/v1/api/recipes?${yummlyID}&${yummlyKey}&requirePictures=true&maxResult=4&start=${~~(Math.random() * 50)}&allowedCuisine[]=cuisine^cuisine-${cuisine}`;
+        console.log(queryURL);
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -18,7 +17,7 @@ $(function(){
     }
 
     function recipeReturn(ID) {
-        let queryURL = `http://api.yummly.com/v1/api/recipe/${ID}?${appID}&${appKey}`;
+        let queryURL = `http://api.yummly.com/v1/api/recipe/${ID}?${yummlyID}&${yummlyKey}`;
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -29,9 +28,10 @@ $(function(){
         });
     }
 
-    $(document).on("click", ".btn", function() {
+    $(document).on("click", "#makeIt", function() {
+        let cuisine = $("#cuisineChoice").val().toLowerCase().replace(/\s+/g, '');
         $("#recipeHome").empty();
-        recipeSearch();
+        recipeSearch(cuisine, "beef");
     });
 
 });
