@@ -26,7 +26,7 @@ $(function(){
             else if (result.length < 4 && !math) {
                 console.log("Search failed.");
                 let div = $(`<div class="col-xs-12 text-center">`);
-                div.append(`<br><h3>No results found. Please try a different ingredient!</h3>`);
+                div.append(`<br><h3>No recipes found. Please try a different ingredient!</h3>`);
                 $("#recipeHome").append(div);
             }
             else {
