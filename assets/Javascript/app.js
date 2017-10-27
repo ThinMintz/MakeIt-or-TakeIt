@@ -52,6 +52,7 @@ $(function(){
     }
 
     $(document).on("click", "#makeIt", function() {
+        console.log("Starting search...")
         let cuisine = $("#cuisineChoice").val().toLowerCase().replace(/\s+/g, ''), course = $("#courseChoice").val().replace(/\s+/g, ''), ingredient = $("#ingredientChoice").val(), math = ~~(Math.random() * 50);
         $("#recipeHome").empty();
         recipeSearch(cuisine, course, ingredient, math);
@@ -64,7 +65,7 @@ $(function(){
 
 
     //Will's coding portion
-    function restaurantSearch(){
+    /*function restaurantSearch(){
         var apiKey = "AIzaSyDNd-YznTLDle5yj2H7ORcuWMpIEXjOnzs";
         var userZipcode = "60646";
         var cuisine = "chinese";
@@ -78,7 +79,7 @@ $(function(){
         });
 
     }
-        restaurantSearch();
+        restaurantSearch();*/
 
 });
 
