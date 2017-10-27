@@ -2,7 +2,7 @@ $(function(){
 
     
     //begin Alex's code
-    var yummlyID = "_app_id=3123c164", yummlyKey = "_app_key=0a453b6219d75c4f9b5bd7deafcd8724";
+    const yummlyID = "_app_id=3123c164", yummlyKey = "_app_key=0a453b6219d75c4f9b5bd7deafcd8724";
 
     function recipeSearch(cuisine, course, ingredient, math) {
         let ingredientSearch = "";
@@ -21,7 +21,7 @@ $(function(){
             }
             else if (result.length < 4 && !math) {
                 console.log("Search failed.");
-                let div = $(`<div class="col-xs-12 text-center">`);
+                let div = $(`<div class="col-xs-12">`);
                 div.append(`<br><h3>No recipes found. Please try a different ingredient!</h3>`);
                 $("#recipeHome").append(div);
             }
