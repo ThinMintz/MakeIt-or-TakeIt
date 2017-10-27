@@ -16,11 +16,11 @@ $(function(){
             if (result.length < 4 && math) {
                 math = math - 10;
                 if (math < 0) math = 0;
-                console.log("Retrying search...");
+                console.log(`Retrying search, starting from result #${math}...`);
                 recipeSearch(cuisine, course, ingredient, math);
             }
             else if (result.length < 4 && !math) {
-                console.log("Search failed.");
+                console.log("Search failed. No results found.");
                 let div = $(`<div class="col-xs-12">`);
                 div.append(`<br><h3>No recipes found. Please try a different ingredient!</h3>`);
                 $("#recipeHome").append(div);
@@ -53,8 +53,8 @@ $(function(){
         $("#recipeHome").empty();
         let cuisine = $("#cuisineChoice").val(), course = $("#courseChoice").val(), ingredient = $("#ingredientChoice").val(), math = ~~(Math.random() * 50);
         validText(ingredient) 
-            ? (console.log(`Starting recipe search for ${cuisine} ${course.toLowerCase()} that contain ${ingredient}...`), ingredient = ingredient.toLowerCase())
-            : (console.log("Invalid ingredient; ignoring parameter."), console.log(`Starting recipe search for ${cuisine} ${course.toLowerCase()}...`), ingredient = false);
+            ? (console.log(`New recipe search for ${cuisine} ${course.toLowerCase()} that contain ${ingredient}, starting from result #${math}...`), ingredient = ingredient.toLowerCase())
+            : (console.log("Invalid ingredient; ignoring parameter."), console.log(`New recipe search for ${cuisine} ${course.toLowerCase()}, starting from result #${math}...`), ingredient = false);
         cuisine = cuisine.toLowerCase().replace(/\s+/g, '');
         recipeSearch(cuisine, course, ingredient, math);
     });
