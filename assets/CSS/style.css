@@ -1,4 +1,9 @@
-.jumbotron {
-	background: url("../Images/Herbs.jpg");
+body {
+	font-family: 
+}
 
+
+.jumbotron {
+	background: url("../Images/platter.jpg");
+	height: 300px;
 }
