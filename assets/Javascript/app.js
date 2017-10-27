@@ -51,7 +51,7 @@ $(function(){
     }
 
     function validText(text) {  
-        let letters = /^[A-Za-z ']+$/;  
+        let letters = /^[A-Za-z '-]+$/;  
         return text.match(letters) ? true : false;  
     }  
 
