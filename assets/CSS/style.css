@@ -4,10 +4,15 @@ body {
 
 #title {
 	font-size: 25px;
+	padding: 15px;
 }
 
-#cuisineChoice, #courseChoice, #ingredientChoice {
-	padding: 25px;
+#foodOptions {
+	padding: 15px;
+}
+
+#cuisineChoice, #courseChoice, #ingredientSearch {
+	width: 100%;
 }
 
 
