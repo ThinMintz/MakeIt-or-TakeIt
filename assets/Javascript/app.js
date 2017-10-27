@@ -3,7 +3,7 @@ $(function(){
     var yummlyID = "_app_id=3123c164", yummlyKey = "_app_key=0a453b6219d75c4f9b5bd7deafcd8724";
 
     function recipeSearch(cuisine, course, ingredient) {
-        var ingredientSearch;
+        var ingredientSearch = "";
         if (ingredient) {
             var ingredientSearch = `&allowedIngredient[]=${ingredient}`;
         }
