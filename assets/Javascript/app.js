@@ -34,4 +34,23 @@ $(function(){
         recipeSearch(cuisine, "beef");
     });
 
+
+
+
+
+
+
+    //Will's coding portion
+    function restaurantSearch(response){
+        var apiKey = "AIzaSyDNd-YznTLDle5yj2H7ORcuWMpIEXjOnzs";
+        var userZipcode = "60646";
+        var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/xml?query=" + cuisine + "restaurants+in+" + userZipcode + "&key=" + apiKey;
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).done(function(response){
+            console.log(response);
+        });
+    }
 });
+
