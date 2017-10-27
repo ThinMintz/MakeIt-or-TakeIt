@@ -1,5 +1,7 @@
 $(function(){
 
+    
+    //begin Alex's code
     var yummlyID = "_app_id=3123c164", yummlyKey = "_app_key=0a453b6219d75c4f9b5bd7deafcd8724";
 
     function recipeSearch(cuisine, course, ingredient, math) {
@@ -49,13 +51,8 @@ $(function(){
         $("#recipeHome").empty();
         recipeSearch(cuisine, course, ingredient, math);
     });
-
-
-
-
-
-
-
+    //end Alex's code
+  
     //Will's coding portion
     function restaurantSearch(response2){
         var apiKey = "AIzaSyDNd-YznTLDle5yj2H7ORcuWMpIEXjOnzs";
@@ -72,5 +69,6 @@ $(function(){
 
     }
         restaurantSearch();
+
 });
 
