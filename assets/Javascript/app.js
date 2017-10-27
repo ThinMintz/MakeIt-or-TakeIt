@@ -31,6 +31,7 @@ $(function(){
                 $("#recipeHome").append(div);
             }
             else {
+                console.log(`Displaying search results #${math}, #${math + 1}, #${math + 2}, and #${math + 3}.`)
                 for (let index of result) {
                     recipeReturn(index.id)
                 }
