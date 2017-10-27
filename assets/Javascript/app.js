@@ -16,12 +16,12 @@ $(function(){
             method: "GET"
         }).done(function(response) { 
             let result = response.matches;
-            console.log(result.length);
             if (!result.length && math) {
-                console.log("redo");
+                console.log("Retrying search...");
                 recipeSearch(cuisine, course, ingredient, 0);
             }
             else if (!result.length && !math) {
+                console.log("Search failed.");
                 let div = $(`<div class="col-xs-6">`);
                 div.append(`<h3>No results found. Please try a different ingredient!</h3>`);
                 $("#recipeHome").append(div);
@@ -53,6 +53,11 @@ $(function(){
     });
     //end Alex's code
   
+
+
+
+
+  
     //Will's coding portion
     function restaurantSearch(response2){
         var apiKey = "AIzaSyDNd-YznTLDle5yj2H7ORcuWMpIEXjOnzs";
@@ -63,7 +68,7 @@ $(function(){
         $.ajax({
             url: queryURL,
             method: "GET"
-        }).done(function(response2){
+        }).done(function(response){
             console.log(response2);
         });
 
