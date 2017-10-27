@@ -6,7 +6,7 @@ $(function(){
 
     function recipeSearch(cuisine, course, ingredient, math) {
         let ingredientSearch = "";
-        if (ingredient) { ingredientSearch = `&allowedIngredient[]=${ingredient}` }
+        if (ingredient) ingredientSearch = `&allowedIngredient[]=${ingredient}`;
         let queryURL = `http://api.yummly.com/v1/api/recipes?${yummlyID}&${yummlyKey}&requirePictures=true&maxResult=4&start=${math}&allowedCuisine[]=cuisine^cuisine-${cuisine}&allowedCourse[]=course^course-${course}${ingredientSearch}`;
         $.ajax({
             url: queryURL,
@@ -15,7 +15,7 @@ $(function(){
             let result = response.matches;
             if (result.length < 4 && math) {
                 math = math - 10;
-                if (math < 0) { math = 0 }
+                if (math < 0) math = 0;
                 console.log("Retrying search...");
                 recipeSearch(cuisine, course, ingredient, math);
             }
@@ -27,7 +27,7 @@ $(function(){
             }
             else {
                 console.log(`Displaying search results #${math}, #${math + 1}, #${math + 2}, and #${math + 3}.`);
-                for (let index of result) { recipeReturn(index.id) }
+                for (let index of result) recipeReturn(index.id);
             }
         });
     }
