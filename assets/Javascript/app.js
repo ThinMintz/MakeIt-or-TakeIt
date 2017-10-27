@@ -7,10 +7,9 @@ $(function(){
     function recipeSearch(cuisine, course, ingredient, math) {
         var ingredientSearch = "";
         if (ingredient) {
-            var ingredientSearch = `&allowedIngredient[]=${ingredient}`;
+            ingredientSearch = `&allowedIngredient[]=${ingredient}`;
         }
         let queryURL = `http://api.yummly.com/v1/api/recipes?${yummlyID}&${yummlyKey}&requirePictures=true&maxResult=4&start=${math}&allowedCuisine[]=cuisine^cuisine-${cuisine}&allowedCourse[]=course^course-${course}${ingredientSearch}`;
-        console.log(queryURL);
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -26,8 +25,8 @@ $(function(){
             }
             else if (result.length < 4 && !math) {
                 console.log("Search failed.");
-                let div = $(`<div class="col-xs-6">`);
-                div.append(`<h3>No results found. Please try a different ingredient!</h3>`);
+                let div = $(`<div class="col-xs-12 text-center">`);
+                div.append(`<br><h3>No results found. Please try a different ingredient!</h3>`);
                 $("#recipeHome").append(div);
             }
             else {
@@ -65,7 +64,7 @@ $(function(){
 
 
     //Will's coding portion
-    /*function restaurantSearch(){
+    function restaurantSearch(){
         var apiKey = "AIzaSyDNd-YznTLDle5yj2H7ORcuWMpIEXjOnzs";
         var userZipcode = "60646";
         var cuisine = "chinese";
@@ -79,7 +78,7 @@ $(function(){
         });
 
     }
-        restaurantSearch();*/
+        restaurantSearch();
 
 });
 
