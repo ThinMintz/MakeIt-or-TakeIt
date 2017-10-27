@@ -51,7 +51,7 @@ $(function(){
     }
 
     $(document).on("click", "#makeIt", function() {
-        let cuisine = $("#cuisineChoice").val().toLowerCase().replace(/\s+/g, ''), course = $("#courseChoice").val().replace(/\s+/g, ''), ingredient = $("#ingredientChoice").val().toLowerCase().replace(/\s+/g, ''), math = ~~(Math.random() * 50);
+        let cuisine = $("#cuisineChoice").val().toLowerCase().replace(/\s+/g, ''), course = $("#courseChoice").val().replace(/\s+/g, ''), ingredient = $("#ingredientChoice").val(), math = ~~(Math.random() * 50);
         $("#recipeHome").empty();
         recipeSearch(cuisine, course, ingredient, math);
     });
