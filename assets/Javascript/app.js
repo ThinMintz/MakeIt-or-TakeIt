@@ -5,7 +5,7 @@ $(function(){
     var yummlyID = "_app_id=3123c164", yummlyKey = "_app_key=0a453b6219d75c4f9b5bd7deafcd8724";
 
     function recipeSearch(cuisine, course, ingredient, math) {
-        var ingredientSearch = "";
+        let ingredientSearch = "";
         if (ingredient) {
             ingredientSearch = `&allowedIngredient[]=${ingredient}`;
         }
@@ -30,7 +30,7 @@ $(function(){
                 $("#recipeHome").append(div);
             }
             else {
-                console.log(`Displaying search results #${math}, #${math + 1}, #${math + 2}, and #${math + 3}.`)
+                console.log(`Displaying search results #${math}, #${math + 1}, #${math + 2}, and #${math + 3}.`);
                 for (let index of result) {
                     recipeReturn(index.id)
                 }
@@ -50,9 +50,17 @@ $(function(){
         });
     }
 
+    function validText(text) {  
+        let letters = /^[A-Za-z ']+$/;  
+        return text.match(letters) ? true : false;  
+    }  
+
     $(document).on("click", "#makeIt", function() {
-        console.log("Starting search...")
-        let cuisine = $("#cuisineChoice").val().toLowerCase().replace(/\s+/g, ''), course = $("#courseChoice").val().replace(/\s+/g, ''), ingredient = $("#ingredientChoice").val(), math = ~~(Math.random() * 50);
+        let cuisine = $("#cuisineChoice").val(), course = $("#courseChoice").val(), ingredient = $("#ingredientChoice").val(), math = ~~(Math.random() * 50);
+        validText(ingredient) 
+            ? (console.log(`Starting recipe search for ${cuisine} ${course.toLowerCase()} that contain ${ingredient}...`), ingredient = ingredient.toLowerCase())
+            : (console.log("Invalid ingredient; ignoring parameter."), console.log(`Starting recipe search for ${cuisine} ${course.toLowerCase()}...`), ingredient = false);
+        cuisine = cuisine.toLowerCase().replace(/\s+/g, '');
         $("#recipeHome").empty();
         recipeSearch(cuisine, course, ingredient, math);
     });
