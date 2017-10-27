@@ -16,11 +16,15 @@ $(function(){
             method: "GET"
         }).done(function(response) { 
             let result = response.matches;
-            if (!result.length && math) {
+            if (result.length < 4 && math) {
+                math = math - 10;
+                if (math < 0) {
+                    math = 0;
+                }
                 console.log("Retrying search...");
-                recipeSearch(cuisine, course, ingredient, 0);
+                recipeSearch(cuisine, course, ingredient, math);
             }
-            else if (!result.length && !math) {
+            else if (result.length < 4 && !math) {
                 console.log("Search failed.");
                 let div = $(`<div class="col-xs-6">`);
                 div.append(`<h3>No results found. Please try a different ingredient!</h3>`);
@@ -57,9 +61,9 @@ $(function(){
 
 
 
-  
+
     //Will's coding portion
-    function restaurantSearch(response2){
+    function restaurantSearch(){
         var apiKey = "AIzaSyDNd-YznTLDle5yj2H7ORcuWMpIEXjOnzs";
         var userZipcode = "60646";
         var cuisine = "chinese";
@@ -69,7 +73,7 @@ $(function(){
             url: queryURL,
             method: "GET"
         }).done(function(response){
-            console.log(response2);
+            console.log(response);
         });
 
     }
