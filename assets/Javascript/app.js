@@ -69,6 +69,48 @@ $(function(){
 
 
     //Will's coding portion
+    function foursquareApi(){
+        let clientId = "MKSDIAW4TPUGKG2VZVL1AWA3Y0RRNE4IL1DBEGOUTE5V4GWD";
+        let clientSecret = "QOSAAQPN015GOWGVZ5XOOCSE5LERPN5KBZRACT4DJNN1MBUG";
+        let userZip = $("#zipcode").val().trim();
+        let queryURL = "https://api.foursquare.com/v2/venues/search?v=20161016&near=60646&query=chinese&intent=checkin&limit=10&client_id="+clientId+"&client_secret="+clientSecret;
+
+
+        $.getJSON({
+            url: queryURL
+        }).done(function(response){
+            console.log(response);
+
+        })
+    };
+
+    foursquareApi();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 });
