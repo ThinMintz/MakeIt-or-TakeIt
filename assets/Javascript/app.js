@@ -50,6 +50,7 @@ $(function(){
     }  
 
     $(document).on("click", "#makeIt", function() {
+        event.preventDefault();
         $("#recipeHome").empty();
         let cuisine = $("#cuisineChoice").val(), course = $("#courseChoice").val(), ingredient = $("#ingredientChoice").val(), math = ~~(Math.random() * 50);
         validText(ingredient) 
