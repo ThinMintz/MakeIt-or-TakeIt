@@ -40,7 +40,6 @@ $(function(){
             url: queryURL,
             method: "GET"
         }).done(function(response) {
-            console.log(response);
             let div = $(`<div class="col-xs-6 recipe-div">`);
             div.append(`<a href=${response.attribution.url} target="_blank"><h4>${response.name}</h4></a>`).append(`<a href=${response.attribution.url} target="_blank"><img class="recipe-image" src=${response.images[0].imageUrlsBySize["360"]} /></a>`);
             $("#recipeHome").append(div);
