@@ -3,6 +3,10 @@ body {
 
 }
 
+#titleRow {
+	margin-top: 10px;
+}
+
 #title {
 	font-size: 25px;
 	padding: 15px;
@@ -29,10 +33,10 @@ body {
 }
 
 .recipe-image {
-	border-radius: 10px;
-	border: 3px solid black;
+	/*border-radius: 10px;
+	border: 3px solid black;*/
 }
 
 .recipe-image:hover {
-	filter: saturate(150%);
+	filter: saturate(115%);
 }
