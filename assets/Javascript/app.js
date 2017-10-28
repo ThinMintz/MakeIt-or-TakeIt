@@ -39,7 +39,7 @@ $(function(){
             method: "GET"
         }).done(function(response) {
             let div = $(`<div class="col-xs-6">`);
-            div.append(`<a href=${response.attribution.url} target="_blank"><h3>${response.name}</h3></a>`).append(`<img src=${response.images[0].hostedLargeUrl} />`);
+            div.append(`<a href=${response.attribution.url} target="_blank"><h3>${response.name}</h3></a>`).append(`<img class="recipe-image" src=${response.images[0].hostedLargeUrl} />`);
             $("#recipeHome").append(div);
         });
     }
