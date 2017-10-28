@@ -1,13 +1,19 @@
 body {
 	font-family: 'Quicksand', sans-serif;
+
 }
 
 #title {
 	font-size: 25px;
+	padding: 15px;
 }
 
-#cuisineChoice, #courseChoice, #ingredientChoice {
-	padding: 25px;
+#foodOptions {
+	padding: 10px;
+}
+
+#cuisineChoice, #courseChoice, #ingredientSearch {
+	width: 100%;
 }
 
 

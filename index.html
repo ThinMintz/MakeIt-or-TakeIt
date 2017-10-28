@@ -22,11 +22,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-			<span class="text-center" id="title">Make it or Take it!</span>
+			<span class="text-center" id="title">Make it or Take it</span>
 			</div>
 		</div>
 		
-		<div class="row">
+		<div class="row" id="foodOptions">
 		<div class= "col-md-6">
 				<select id="cuisineChoice" class="form-control">
 				  <option>American</option>
@@ -56,36 +56,37 @@
 
 		<div class= "col-md-3">
 				<select id="courseChoice" class="form-control">
-				  <option>Main Dishes</option>
-				  <option>Desserts</option>
-				  <option>Breakfast and Brunch</option>
-				  <option>Lunch and Snacks</option>
-				  <option>Appetizers</option>
+					<option>Cocktails</option>
+					<option>Appetizers</option>
+					<option>Salads</option>
+					<option selected="selected">Main Dishes</option>
+					<option>Side Dishes</option>
+					<option>Desserts</option>
 				</select>
 		</div>
 
 		<div class="col-md-3">
-			    <div class="input-group">
-			      <input type="text" class="form-control" id="ingredientChoice" placeholder="Can't find your cuisine?">
+			    <div class="input-group" id="ingredientSearch">
+			      <input type="text" class="form-control" id="ingredientChoice" placeholder="Want something specific?">
+
 				</div> 
+			</div>
 		</div>
 	</div>
-</div>
 
 	<div class="jumbotron">
   		<div class="container">
-    	<h1>Make it or Take it!</h1>
+    	<!-- <h1>Make it or Take it!</h1> -->
   		</div>
 	</div>
 
 	<div class="container">
 		<div class= "row">
 			<div class="col-md-6">
-
-				<button id="takeIt" class="btn btn-primary" type="submit">Let's Take it!</button>
+				<button id="takeIt" class="btn btn-primary" type="submit">Take it!</button>
  				<button id="makeIt" class="btn btn-primary" type="submit">Make it!</button>
-
 			</div>
+			
 			<div class="col-md-6">
 				<div class="input-group">
 				      <input type="text" class="form-control" id="zipcode" placeholder="Enter Zipcode Here">
@@ -100,6 +101,7 @@
 		</div>
 	</div>
 </div>
+
 	<script src="assets/Javascript/app.js" type="text/javascript"></script>
 
 </body>
