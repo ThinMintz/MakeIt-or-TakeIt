@@ -3,6 +3,10 @@ body {
 
 }
 
+#titleRow {
+	margin-top: 10px;
+}
+
 #title {
 	font-size: 25px;
 	padding: 15px;
@@ -22,6 +26,7 @@ body {
 	background-size: 100%;
 	height: 300px;
 }
+
 
 .btn {
 /*   border-radius: 4px; */
@@ -60,4 +65,18 @@ width: 200px; */
 .btn:hover span:after {
   opacity: 1; /* changed from 1 */
   right: 0;
+}
+.recipe-div {
+	margin-top: 10px;
+	padding-bottom: 10px;
+}
+
+.recipe-image {
+	/*border-radius: 10px;
+	border: 3px solid black;*/
+}
+
+.recipe-image:hover {
+	filter: saturate(115%);
+
 }
