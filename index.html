@@ -26,8 +26,9 @@
 			</div>
 		</div>
 		
+		<!-- wrap in form tag -->
 		<div class="row" id="foodOptions">
-		<div class= "col-md-6">
+			<div class= "col-md-4">
 				<select id="cuisineChoice" class="form-control">
 				  <option>American</option>
 				  <option>Asian</option>
@@ -52,9 +53,9 @@
 				  <option>Swedish</option>
 				  <option>Thai</option>
 				</select>
-		</div>
+			</div>
 
-		<div class= "col-md-3">
+			<div class= "col-md-3">
 				<select id="courseChoice" class="form-control">
 					<option>Cocktails</option>
 					<option>Appetizers</option>
@@ -63,16 +64,20 @@
 					<option>Side Dishes</option>
 					<option>Desserts</option>
 				</select>
-		</div>
-
-		<div class="col-md-3">
-			    <div class="input-group" id="ingredientSearch">
-			      <input type="text" class="form-control" id="ingredientChoice" placeholder="Want something specific?">
-
-				</div> 
 			</div>
-		</div>
-	</div>
+
+			<div class="col-md-3">
+			    <div class="input-group" id="ingredientSearch">
+			      <input type="text" class="form-control" id="ingredientChoice" placeholder="Search an Ingredient">
+				</div>
+			</div>	
+
+			<div class="col-sm-2">
+				<button id="makeIt" class="btn btn-primary" type="submit">Make it!</button>	      
+			</div>
+		</div>	
+	</div>	
+				 
 
 	<div class="jumbotron">
   		<div class="container">
@@ -84,7 +89,7 @@
 		<div class= "row">
 			<div class="col-md-6">
 				<button id="takeIt" class="btn btn-primary" type="submit">Take it!</button>
- 				<button id="makeIt" class="btn btn-primary" type="submit">Make it!</button>
+ 				
 			</div>
 			
 			<div class="col-md-6">
