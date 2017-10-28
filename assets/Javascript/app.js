@@ -1,6 +1,5 @@
 $(function(){
 
-    
     //begin Alex's code
     const yummlyID = "_app_id=3123c164", yummlyKey = "_app_key=0a453b6219d75c4f9b5bd7deafcd8724";
 
@@ -40,7 +39,7 @@ $(function(){
             url: queryURL,
             method: "GET"
         }).done(function(response) {
-            let div = $(`<div class="col-xs-6 recipe-div">`);
+            let div = $(`<div class="col-md-6 col-xs-12 recipe-div">`);
             div.append(`<a href=${response.attribution.url} target="_blank"><h4>${response.name}</h4></a>`).append(`<a href=${response.attribution.url} target="_blank"><img class="recipe-image" src=${response.images[0].imageUrlsBySize["360"]} /></a>`);
             $("#recipeHome").append(div);
         });

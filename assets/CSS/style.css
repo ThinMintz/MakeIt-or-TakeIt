@@ -24,6 +24,7 @@ body {
 .jumbotron {
 	background: url("../Images/platter.jpg");
 	background-size: 100%;
+	background-repeat: no-repeat;
 	height: 300px;
 }
 
