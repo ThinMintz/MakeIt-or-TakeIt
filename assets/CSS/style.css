@@ -33,10 +33,9 @@ body {
 }
 
 .recipe-image {
-	/*border-radius: 10px;
-	border: 3px solid black;*/
+	border-radius: 10px;
 }
 
 .recipe-image:hover {
-	filter: saturate(115%);
+	filter: opacity(75%);
 }
