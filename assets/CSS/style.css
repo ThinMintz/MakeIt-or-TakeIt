@@ -73,6 +73,7 @@ width: 200px; */
 
 .recipe-image {
 	border-radius: 10px;
+	transition: .3s ease;
 }
 
 .recipe-image:hover {
