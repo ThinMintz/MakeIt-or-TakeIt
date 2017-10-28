@@ -78,3 +78,7 @@ width: 200px; */
 .recipe-image:hover {
 	filter: opacity(75%);
 }
+
+button:focus {
+    outline: 0 !important; 
+}
