@@ -21,12 +21,10 @@ $(function(){
 
             else if (result.length < 4 && !math) {
                 console.log("Search failed. No results found.");
-                let div = $(`<div class="col-xs-12">`);
-                div.append(`<br><h3>No recipes found. Please try a different ingredient!</h3>`);
-
-                $("#recipeHome").append(div);
+                $("#recipeHome").html(`<div class="col-xs-12"><h3>No recipes found. Please try a different ingredient!</h3></div>`);
             }
             else {
+                $("#recipeHome").empty();
                 console.log(`Displaying search results #${math + 1}, #${math + 2}, #${math + 3}, and #${math + 4}.`);
                 for (let index of result) recipeReturn(index.id);
             }
@@ -52,7 +50,7 @@ $(function(){
 
     $(document).on("click", "#makeIt", function() {
         event.preventDefault();
-        $("#recipeHome").empty();
+        $("#recipeHome").html(`<div class="col-xs-12"><h3>Searching for recipes...</h3></div>`);
         let cuisine = $("#cuisineChoice").val(), course = $("#courseChoice").val(), ingredient = $("#ingredientChoice").val(), math = ~~(Math.random() * 50);
         validText(ingredient) 
             ? (console.log(`New recipe search for ${cuisine} ${course.toLowerCase()} that contain ${ingredient}, starting from result #${math + 1}...`), ingredient = ingredient.toLowerCase())
