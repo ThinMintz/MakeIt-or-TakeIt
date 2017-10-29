@@ -50,7 +50,7 @@ $(function(){
 
     $(document).on("click", "#makeIt", function() {
         event.preventDefault();
-        $("#recipeHome").html(`<div class="col-xs-12"><h3>Searching for recipes...</h3></div>`);
+        $("#recipeHome").html(`<div class="col-xs-12"><h3>Searching for recipes<span class="ellipsis-anim"><span>.</span><span>.</span><span>.</span></span></h3></div>`);
         let cuisine = $("#cuisineChoice").val(), course = $("#courseChoice").val(), ingredient = $("#ingredientChoice").val(), math = ~~(Math.random() * 50);
         validText(ingredient) 
             ? (console.log(`New recipe search for ${cuisine} ${course.toLowerCase()} that contain ${ingredient}, starting from result #${math + 1}...`), ingredient = ingredient.toLowerCase())
