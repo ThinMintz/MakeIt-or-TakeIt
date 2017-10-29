@@ -3,6 +3,10 @@ body {
 
 }
 
+button:focus {
+    outline: 0 !important; 
+}
+
 #titleRow {
 	margin-top: 10px;
 }
@@ -73,13 +77,15 @@ width: 200px; */
 
 .recipe-image {
 	border-radius: 10px;
-	transition: .3s ease;
+  	transition: .3s ease;
 }
 
 .recipe-image:hover {
-	filter: opacity(75%);
+	box-shadow:0 0 20px rgba(0, 0, 0, 0.8);
+	transform: scale(1.03);
 }
 
-button:focus {
-    outline: 0 !important; 
+#recipeHome {
+	margin-bottom: 30px;
 }
+
