@@ -18,7 +18,6 @@ $(function(){
                 console.log(`Retrying search, starting from result #${math + 1}...`);
                 recipeSearch(cuisine, course, ingredient, math);
             }
-
             else if (result.length < 4 && !math) {
                 console.log("Search failed. No results found.");
                 $("#recipeHome").html(`<div class="col-xs-12"><h3>No recipes found. Please try a different ingredient!</h3></div>`);
@@ -46,7 +45,7 @@ $(function(){
     function validText(text) {  
         let letters = /^[A-Za-z '-]+$/;  
         return text.match(letters) ? true : false;  
-    }  
+    } 
 
     $(document).on("click", "#makeIt", function() {
         event.preventDefault();
@@ -58,6 +57,10 @@ $(function(){
         cuisine = cuisine.toLowerCase().replace(/\s+/g, '');
         recipeSearch(cuisine, course, ingredient, math);
     });
+
+    document.body.addEventListener("load", function(event){
+        if($(event.target).attr("class") === "recipe-image") document.getElementById("recipeHome").scrollIntoView({ behavior: 'smooth' , block: 'start', inline: 'nearest'});
+    }, true);
     //end Alex's code
   
 
