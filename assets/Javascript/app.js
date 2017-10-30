@@ -38,7 +38,7 @@ $(function(){
         }).done(function(response) {
             let div = $(`<div class="col-md-6 col-xs-12 recipe-div">`);
             div.append(`<div class="recipe-name"><a href=${response.attribution.url} target="_blank" title="${response.name}"><h4>${response.name}</h4></a></div>`)
-                .append(`<a href=${response.attribution.url} target="_blank" title="${response.name}"><img class="recipe-image" src=${response.images[0].imageUrlsBySize["360"]} /></a>`);
+                .append(`<a href=${response.attribution.url} target="_blank"><img class="recipe-image" src=${response.images[0].imageUrlsBySize["360"]} /></a>`);
             $("#recipeHome").append(div);
         });
     }
