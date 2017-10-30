@@ -76,6 +76,11 @@ width: 200px; */
 	padding-bottom: 10px;
 }
 
+.recipe-name {
+	white-space: nowrap;
+	overflow: hidden;
+}
+
 .recipe-image {
 	border-radius: 10px;
   	transition: .3s ease;
