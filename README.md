@@ -17,6 +17,7 @@ This is the premise of **Make it or Take it!**
   <dr>Responsible for the front-end portion</dr>
 
 </dl>
+
 ***
 
 To find the recipes, we used *Yummly API*
