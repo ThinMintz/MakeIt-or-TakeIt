@@ -69,23 +69,63 @@ $(function(){
 
 
     //Will's coding portion
+$("#takeIt").on("click", function(){
+
+
     function foursquareApi(){
         let clientId = "MKSDIAW4TPUGKG2VZVL1AWA3Y0RRNE4IL1DBEGOUTE5V4GWD";
         let clientSecret = "QOSAAQPN015GOWGVZ5XOOCSE5LERPN5KBZRACT4DJNN1MBUG";
         let userZip = $("#zipcode").val().trim();
-        let queryURL = "https://api.foursquare.com/v2/venues/search?v=20161016&near=60646&query=chinese&intent=checkin&limit=10&client_id="+clientId+"&client_secret="+clientSecret;
+        let userCuisineInput = $("#cuisineChoice").val()
+        let queryURL = "https://api.foursquare.com/v2/venues/search?v=20161016&near="+userZip+"&query=chineserestaurant&intent=checkin&limit=10&client_id="+clientId+"&client_secret="+clientSecret;
 
 
         $.getJSON({
             url: queryURL
         }).done(function(response){
             console.log(response);
+            // console.log(response.response.venues["0"]);
+            // console.log("Restaurant name: "+response.response.venues["0"].name);
+            // console.log("Restaurant location: "+response.response.venues["0"].location.address);
+            // console.log("Restaurant contact: "+response.response.venues["0"].contact.formattedPhone);
+            // console.log("Restaurant menu link: "+response.response.venues["0"].menu.url);
+            // console.log("Restaurant id: "+response.response.venues["0"].id);
 
-        })
+            // $("#takeIt").on("click", function(){
+
+            
+            // var zipTest = $("#zipcode").val().trim();
+            for(let i = 0; i < 10; i++){
+            console.log(i);
+            var restaurantName = response.response.venues[i].name;
+            var restaurantLocation = response.response.venues[i].location.address;
+            var restaurantContact = response.response.venues[i].contact.formattedPhone;
+            // var restaurantMenuLink = response.response.venues[i].menu.url;
+            var restaurantDiv = $("<div>");
+
+
+
+
+            var a = restaurantName + restaurantLocation + restaurantContact ;
+            console.log(a);
+
+            restaurantDiv.append(a);
+
+           }; 
+
+        });
+
+
+        
+        
     };
+
+
+
 
     foursquareApi();
 
+});
 
 
 
