@@ -92,17 +92,14 @@ $("#takeIt").on("click", function(){
             // console.log("Restaurant menu link: "+response.response.venues["0"].menu.url);
             // console.log("Restaurant id: "+response.response.venues["0"].id);
 
-            // $("#takeIt").on("click", function(){
 
-            
-            // var zipTest = $("#zipcode").val().trim();
             for(let i = 0; i < 10; i++){
             console.log(i);
             var restaurantName = response.response.venues[i].name;
             var restaurantLocation = response.response.venues[i].location.address;
             var restaurantContact = response.response.venues[i].contact.formattedPhone;
             // var restaurantMenuLink = response.response.venues[i].menu.url;
-            var restaurantDiv = $("<div>");
+            // var restaurantDiv = $("<div>");
 
 
 
@@ -110,7 +107,7 @@ $("#takeIt").on("click", function(){
             var a = restaurantName + restaurantLocation + restaurantContact ;
             console.log(a);
 
-            restaurantDiv.append(a);
+            $("#places").append(a);
 
            }; 
 
