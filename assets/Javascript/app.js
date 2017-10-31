@@ -78,7 +78,7 @@ $("#takeIt").on("click", function(){
         let clientSecret = "QOSAAQPN015GOWGVZ5XOOCSE5LERPN5KBZRACT4DJNN1MBUG";
         let userZip = $("#zipcode").val().trim();
         let userCuisineInput = $("#cuisineChoice").val()
-        let queryURL = "https://api.foursquare.com/v2/venues/search?v=20161016&near="+userZip+"&query=chineserestaurant&intent=checkin&limit=10&client_id="+clientId+"&client_secret="+clientSecret;
+        let queryURL = "https://api.foursquare.com/v2/venues/search?v=20161016&near="+userZip+"&query="+userCuisineInput+"food&intent=checkin&limit=10&client_id="+clientId+"&client_secret="+clientSecret;
 
 
         $.getJSON({
@@ -92,43 +92,64 @@ $("#takeIt").on("click", function(){
             // console.log("Restaurant menu link: "+response.response.venues["0"].menu.url);
             // console.log("Restaurant id: "+response.response.venues["0"].id);
 
-            // $("#takeIt").on("click", function(){
+            var restaurants = [];
 
-            
-            // var zipTest = $("#zipcode").val().trim();
-            for(let i = 0; i < 10; i++){
-            console.log(i);
-            var restaurantName = response.response.venues[i].name;
-            var restaurantLocation = response.response.venues[i].location.address;
-            var restaurantContact = response.response.venues[i].contact.formattedPhone;
-            // var restaurantMenuLink = response.response.venues[i].menu.url;
-            var restaurantDiv = $("<div>");
+            for(let i = 0; i < response.response.venues.length; i++){
+                console.log(i);
+                restaurants[i] = [];
+                restaurants[i][0] = response.response.venues[i].name;
+                restaurants[i][1] = response.response.venues[i].location.address;
 
+                if (response.response.venues[i].contact.formattedPhone !== "undefined"){
+                restaurants[i][2] = response.response.venues[i].contact.formattedPhone;                
+                }
 
+                if ( response.response.venues[i].hasMenu == true){
+                restaurants[i][3] = response.response.venues[i].menu.url;                
+                }
+                else {restaurants[i][3] = ""}
 
-
-            var a = restaurantName + restaurantLocation + restaurantContact ;
-            console.log(a);
-
-            restaurantDiv.append(a);
-
+                restaurants[i][4] = response.response.venues[i].id;
+                restaurants[i][5] = getPhotoId(restaurants[i][4]);    
            }; 
 
+           for(let i = 0; i < restaurants.length; i++){
+            var restaurantDiv = $("<div>");
+            var a = restaurants[i];
+            var restaurantHtmlString = a[0] + "<br>" + a[1] + "<br>" + a[2] + "<br>" + a[3];
+            restaurantDiv.append(restaurantHtmlString);
+            restaurantDiv.addClass("restaurantVenue");
+            $("#places").append(restaurantDiv);
+           }
+
+
+
+           console.log(restaurants);
         });
 
 
-        
-        
-    };
+    }
 
 
 
 
+    emptyFields();
     foursquareApi();
 
 });
-
-
+        function getPhotoId(venueId){
+            $.getJSON({
+            url: "https://api.foursquare.com/v2/venues/"+venueId+"/photos"
+        
+        }).done(function(pictureResponse){
+                console.log(pictureResponse);
+            }   
+    );
+    }
+    function emptyFields(){
+        $("#places").empty();
+        // $("#zipcode").val("");
+    };
 
 
 

@@ -71,7 +71,7 @@ width: 200px; */
   right: 0;
 }
 
-.recipe-div {
+.recipe-div, #restaurantVenue {
 	margin-top: 10px;
 	padding-bottom: 10px;
 }
@@ -113,6 +113,9 @@ width: 200px; */
 .ellipsis-anim span:nth-child(3) {
     -webkit-animation-delay: 0.2s;
     animation-delay: 0.2s;
+}
+#places {
+  display: inline-block;
 }
 
 @-webkit-keyframes ellipsis-dot {
