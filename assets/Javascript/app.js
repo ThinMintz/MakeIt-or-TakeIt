@@ -61,7 +61,7 @@ $(function(){
     });
 
     document.body.addEventListener("load", function(event){
-        if($(event.target).attr("class") === "recipe-image") document.getElementById("recipeHome").scrollIntoView({ behavior: 'smooth' , block: 'start', inline: 'nearest'});
+        if($(event.target).attr("class") === "recipe-image") document.getElementById("recipeHome").scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
     }, true);
     //end Alex's code
   
