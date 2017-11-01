@@ -7,6 +7,12 @@ button:focus {
     outline: 0 !important; 
 }
 
+#jumboText {
+	text-align: center;
+	color: white;
+	/*background-color: brown;*/
+}
+
 #titleRow {
 	margin-top: 10px;
 }
@@ -24,12 +30,23 @@ button:focus {
 	width: 100%;
 }
 
+#headerText, #summaryText {
+	background-color: black;
+	background-opacity:0.5%;
+	text-align: center;
+	color: white;
+}
 
 .jumbotron {
-	background: url("../Images/platter.jpg");
+	background: url("../Images/veg.jpg");
 	background-size: 100%;
 	background-repeat: no-repeat;
-	height: 300px;
+	height: 320px;
+}
+
+#take-it {
+	padding: 10px;
+	margin-left: 20%;
 }
 
 .btn {
