@@ -77,28 +77,34 @@ $(function(){
             url: queryURL,
             method: "GET"
         }).done(function(response){
-            let venues = response.response.venues;
-            console.log(venues);
-            for (let index of venues) {
-                if (index.contact.formattedPhone) {
-                    let div = $(`<div class="col-md-6 col-xs-12 rest-div">`), restName;
-                    restName = index.url && index.hasMenu 
-                        ? `<h3><a href=${index.url}>${index.name}</a> (<a href=${index.menu.url}>menu</a>)</h3>` 
-                        : index.url && !index.hasMenu
-                            ? `<h3><a href=${index.url}>${index.name}</a></h3>`
-                            : !index.url && index.hasMenu
-                                ? `<h3>${index.name} (<a href=${index.menu.url}>menu</a>)</h3>`
-                                : `<h3>${index.name}</h3>`;
-                    div.append(restName).append(`<h4>${index.location.address}<h4>`).append(`<h4>${index.contact.formattedPhone}<h4>`);
-                    $("#places").append(div);
+            let venues = response.response.venues, venueCount = 0;
+            for (let index of venues) if (index.contact.formattedPhone) venueCount++;
+            if (venueCount) {
+                $("#recipeHome").empty();
+                for (let index of venues) {
+                    if (index.contact.formattedPhone) {
+                        let div = $(`<div class="col-md-6 col-xs-12 rest-div">`), restName;
+                        restName = index.url && index.hasMenu 
+                            ? `<h3><a href=${index.url}>${index.name}</a> (<a href=${index.menu.url}>menu</a>)</h3>` 
+                            : index.url && !index.hasMenu
+                                ? `<h3><a href=${index.url}>${index.name}</a></h3>`
+                                : !index.url && index.hasMenu
+                                    ? `<h3>${index.name} (<a href=${index.menu.url}>menu</a>)</h3>`
+                                    : `<h3>${index.name}</h3>`;
+                        div.append(restName).append(`<h4>${index.location.address}<h4>`).append(`<h4>${index.contact.formattedPhone}<h4>`);
+                        $("#places").append(div);
+                    }
                 }
+            }
+            else {
+                $("#recipeHome").html(`<div class="col-xs-12"><h3>No restaurants found. Please try a different search!</h3></div>`);
             }
         });
     }
 
     $("#takeIt").on("click", function(){
+        $("#recipeHome").html(`<div class="col-xs-12"><h3>Searching for recipes<span class="ellipsis-anim"><span>.</span><span>.</span><span>.</span></span></h3></div>`);
         $("#places").empty();
-        $("#recipeHome").empty();
         foursquareApi();
         $("#zipcode").val("");
     });
