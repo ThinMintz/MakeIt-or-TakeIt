@@ -102,7 +102,7 @@ $("#takeIt").on("click", function(){
                 }
                 else {restaurants[i][3] = ""};
 
-                if(response.response.venues[i].length === "0"){
+                if(restaurants.length === 0){
                     console.log("has nothing");
                 }
 
@@ -149,7 +149,7 @@ $("#takeIt").on("click", function(){
         $("#places").empty();
         $("#recipeHome").empty();
         // $("#zipcode").val("");
-        
+
 
     };
 
