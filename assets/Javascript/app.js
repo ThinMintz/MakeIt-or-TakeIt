@@ -71,8 +71,8 @@ $(function(){
     //Will's coding portion
 
     function foursquareApi(){
-        let clientId = "MKSDIAW4TPUGKG2VZVL1AWA3Y0RRNE4IL1DBEGOUTE5V4GWD", clientSecret = "QOSAAQPN015GOWGVZ5XOOCSE5LERPN5KBZRACT4DJNN1MBUG", userZip = $("#zipcode").val().trim(), userCuisineInput = $("#cuisineChoice").val()
-        let queryURL = `https://api.foursquare.com/v2/venues/search?v=20161016&near=${userZip}&query=${userCuisineInput}food&intent=checkin&limit=10&client_id=${clientId}&client_secret=${clientSecret}`;
+        let clientId = "MKSDIAW4TPUGKG2VZVL1AWA3Y0RRNE4IL1DBEGOUTE5V4GWD", clientSecret = "QOSAAQPN015GOWGVZ5XOOCSE5LERPN5KBZRACT4DJNN1MBUG", userZip = $("#zipcode").val().trim(), userCuisineInput = $("#cuisineChoice").val(),
+        queryURL = `https://api.foursquare.com/v2/venues/search?v=20161016&near=${userZip}&query=${userCuisineInput}food&intent=checkin&limit=10&client_id=${clientId}&client_secret=${clientSecret}`;
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -85,9 +85,9 @@ $(function(){
                     restName = index.url && index.hasMenu 
                         ? `<h3><a href=${index.url}>${index.name}</a> (<a href=${index.menu.url}>menu</a>)</h3>` 
                         : index.url && !index.hasMenu
-                        ? `<h3><a href=${index.url}>${index.name}</a></h3>`
+                            ? `<h3><a href=${index.url}>${index.name}</a></h3>`
                             : !index.url && index.hasMenu
-                            ? `<h3>${index.name} (<a href=${index.menu.url}>menu</a>)</h3>`
+                                ? `<h3>${index.name} (<a href=${index.menu.url}>menu</a>)</h3>`
                                 : `<h3>${index.name}</h3>`;
                     div.append(restName).append(`<h4>${index.location.address}<h4>`).append(`<h4>${index.contact.formattedPhone}<h4>`);
                     $("#places").append(div);
