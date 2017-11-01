@@ -67,13 +67,6 @@ $(function(){
   
 
 
-// console.log(response.response.venues["0"]);
-            // console.log("Restaurant name: "+response.response.venues["0"].name);
-            // console.log("Restaurant location: "+response.response.venues["0"].location.address);
-            // console.log("Restaurant contact: "+response.response.venues["0"].contact.formattedPhone);
-            // console.log("Restaurant menu link: "+response.response.venues["0"].menu.url);
-            // console.log("Restaurant id: "+response.response.venues["0"].id);
-
 
     //Will's coding portion
 
@@ -88,7 +81,7 @@ $(function(){
             console.log(venues);
             for (let index of venues) {
                 if (index.contact.formattedPhone) {
-                    let div = $(`<div class="col-md-6 col-xs-12 rest-div">`), restName, restPhone;
+                    let div = $(`<div class="col-md-6 col-xs-12 rest-div">`), restName;
                     restName = index.url && index.hasMenu 
                         ? `<h3><a href=${index.url}>${index.name}</a> (<a href=${index.menu.url}>menu</a>)</h3>` 
                         : index.url && !index.hasMenu
@@ -103,37 +96,12 @@ $(function(){
         });
     }
 
-    
-
     $("#takeIt").on("click", function(){
         $("#places").empty();
         $("#recipeHome").empty();
         foursquareApi();
         $("#zipcode").val("");
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 });
