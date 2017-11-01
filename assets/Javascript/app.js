@@ -65,7 +65,7 @@ $(function(){
     });
 
     document.body.addEventListener("load", function(event){
-        if($(event.target).attr("class") === "recipe-image") document.getElementById("recipeHome").scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+        if ($(event.target).attr("class") === "recipe-image") document.getElementById("recipeHome").scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
     }, true);
     //end Alex's code
 
@@ -96,6 +96,7 @@ $(function(){
                         $("#places").append(div);
                     }
                 }
+                document.getElementById("places").scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
             }
             else {
                 $("#recipeHome").html(`<div class="col-xs-12"><h3>No restaurants found. Please try a different search!</h3></div>`);
