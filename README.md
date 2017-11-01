@@ -19,8 +19,12 @@ This is the premise of **Make it or Take it!**
 </dl>
 
 ***
-
+We used:
+HMTL
+CSS
+Bootstrap
+JQuery
+Javascript
 To find the recipes, we used *Yummly API*
-
 To find the restaurants, we used *FourSquare API*
 
