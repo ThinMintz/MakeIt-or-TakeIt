@@ -86,11 +86,11 @@ $(function(){
                     if (index.contact.formattedPhone) {
                         let div = $(`<div class="col-md-6 col-xs-12 rest-div">`), restName;
                         restName = index.url && index.hasMenu 
-                            ? `<h3><a href=${index.url}>${index.name}</a> (<a href=${index.menu.url}>menu</a>)</h3>` 
+                            ? `<h3><a href=${index.url} target="_blank">${index.name}</a> (<a href=${index.menu.url} target="_blank">menu</a>)</h3>` 
                             : index.url && !index.hasMenu
-                                ? `<h3><a href=${index.url}>${index.name}</a></h3>`
+                                ? `<h3><a href=${index.url} target="_blank">${index.name}</a></h3>`
                                 : !index.url && index.hasMenu
-                                    ? `<h3>${index.name} (<a href=${index.menu.url}>menu</a>)</h3>`
+                                    ? `<h3>${index.name} (<a href=${index.menu.url} target="_blank">menu</a>)</h3>`
                                     : `<h3>${index.name}</h3>`;
                         div.append(restName).append(`<h4>${index.location.address}<h4>`).append(`<h4>${index.contact.formattedPhone}<h4>`);
                         $("#places").append(div);
