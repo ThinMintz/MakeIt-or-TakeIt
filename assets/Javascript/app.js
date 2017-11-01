@@ -106,7 +106,6 @@ $(function(){
         $("#recipeHome").html(`<div class="col-xs-12"><h3>Searching for restaurants<span class="ellipsis-anim"><span>.</span><span>.</span><span>.</span></span></h3></div>`);
         $("#places").empty();
         foursquareApi();
-        $("#zipcode").val("");
     });
 
 
