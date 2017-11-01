@@ -85,13 +85,6 @@ $("#takeIt").on("click", function(){
             url: queryURL
         }).done(function(response){
             console.log(response);
-            // console.log(response.response.venues["0"]);
-            // console.log("Restaurant name: "+response.response.venues["0"].name);
-            // console.log("Restaurant location: "+response.response.venues["0"].location.address);
-            // console.log("Restaurant contact: "+response.response.venues["0"].contact.formattedPhone);
-            // console.log("Restaurant menu link: "+response.response.venues["0"].menu.url);
-            // console.log("Restaurant id: "+response.response.venues["0"].id);
-
             var restaurants = [];
 
             for(let i = 0; i < response.response.venues.length; i++){
@@ -102,12 +95,18 @@ $("#takeIt").on("click", function(){
 
                 if (response.response.venues[i].contact.formattedPhone !== "undefined"){
                 restaurants[i][2] = response.response.venues[i].contact.formattedPhone;                
-                }
+                };
 
                 if ( response.response.venues[i].hasMenu == true){
                 restaurants[i][3] = response.response.venues[i].menu.url;                
                 }
-                else {restaurants[i][3] = ""}
+                else {restaurants[i][3] = ""};
+
+                if(response.response.venues[i].length === "0"){
+                    console.log("has nothing");
+                }
+
+
 
                 restaurants[i][4] = response.response.venues[i].id;
                 restaurants[i][5] = getPhotoId(restaurants[i][4]);    
@@ -148,7 +147,10 @@ $("#takeIt").on("click", function(){
     }
     function emptyFields(){
         $("#places").empty();
+        $("#recipeHome").empty();
         // $("#zipcode").val("");
+        
+
     };
 
 
