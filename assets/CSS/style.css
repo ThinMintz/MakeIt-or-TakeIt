@@ -23,6 +23,7 @@ button:focus {
 }
 
 #foodOptions {
+	margin: 0 auto;
 	padding: 10px;
 }
 
@@ -51,9 +52,23 @@ button:focus {
 	height: 320px;
 }
 
+.darken {
+ 	background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url("../Images/veg.jpg");
+}
+
 #take-it {
+	width: 30%;
+	margin: 0 auto;
 	padding: 10px;
-	margin-left: 40%;
+}
+
+#enterZip {
+	width: 200px;
 }
 
 .btn {

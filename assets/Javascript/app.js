@@ -43,16 +43,21 @@ $(function(){
         });
     }
 
-    function validText(text) {  
-        let letters = /^[A-Za-z '-]+$/;  
-        return text.match(letters) ? true : false;  
+    function validText(text, string) {
+        let letters = string ? /^[A-Za-z '-]+$/ : /^[0-9]+$/;
+        return text.match(letters) && string 
+            ? true
+            : text.match(letters) && !string && (text).toString().length == 5
+                ? true
+                : false;
     } 
 
     $(document).on("click", "#makeIt", function() {
         event.preventDefault();
+        $("#places").empty();
         $("#recipeHome").html(`<div class="col-xs-12"><h3>Searching for recipes<span class="ellipsis-anim"><span>.</span><span>.</span><span>.</span></span></h3></div>`);
         let cuisine = $("#cuisineChoice").val(), course = $("#courseChoice").val(), ingredient = $("#ingredientChoice").val(), math = ~~(Math.random() * 50);
-        validText(ingredient) 
+        validText(ingredient, true) 
             ? (console.log(`New recipe search for ${cuisine} ${course.toLowerCase()} that contain ${ingredient}, starting from result #${math + 1}...`), ingredient = ingredient.toLowerCase())
             : (console.log("Invalid ingredient; ignoring parameter."), console.log(`New recipe search for ${cuisine} ${course.toLowerCase()}, starting from result #${math + 1}...`), ingredient = false);
         cuisine = cuisine.toLowerCase().replace(/\s+/g, '');
@@ -60,119 +65,52 @@ $(function(){
     });
 
     document.body.addEventListener("load", function(event){
-        if($(event.target).attr("class") === "recipe-image") document.getElementById("recipeHome").scrollIntoView({ behavior: 'smooth' , block: 'start', inline: 'nearest'});
+        if ($(event.target).attr("class") === "recipe-image") document.getElementById("recipeHome").scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
     }, true);
     //end Alex's code
-  
-
-
-
-
 
     //Will's coding portion
-$("#takeIt").on("click", function(){
 
-
-    function foursquareApi(){
-        let clientId = "MKSDIAW4TPUGKG2VZVL1AWA3Y0RRNE4IL1DBEGOUTE5V4GWD";
-        let clientSecret = "QOSAAQPN015GOWGVZ5XOOCSE5LERPN5KBZRACT4DJNN1MBUG";
-        let userZip = $("#zipcode").val().trim();
-        let userCuisineInput = $("#cuisineChoice").val()
-        let queryURL = "https://api.foursquare.com/v2/venues/search?v=20161016&near="+userZip+"&query="+userCuisineInput+"food&intent=checkin&limit=10&client_id="+clientId+"&client_secret="+clientSecret;
-
-
-        $.getJSON({
-            url: queryURL
+    function foursquareApi(userZip, userCuisineInput){
+        let clientId = "MKSDIAW4TPUGKG2VZVL1AWA3Y0RRNE4IL1DBEGOUTE5V4GWD", clientSecret = "QOSAAQPN015GOWGVZ5XOOCSE5LERPN5KBZRACT4DJNN1MBUG",
+        queryURL = `https://api.foursquare.com/v2/venues/search?v=20161016&near=${userZip}&query=${userCuisineInput}food&intent=checkin&limit=10&client_id=${clientId}&client_secret=${clientSecret}`;
+        $.ajax({
+            url: queryURL,
+            method: "GET"
         }).done(function(response){
-            console.log(response);
-            // console.log(response.response.venues["0"]);
-            // console.log("Restaurant name: "+response.response.venues["0"].name);
-            // console.log("Restaurant location: "+response.response.venues["0"].location.address);
-            // console.log("Restaurant contact: "+response.response.venues["0"].contact.formattedPhone);
-            // console.log("Restaurant menu link: "+response.response.venues["0"].menu.url);
-            // console.log("Restaurant id: "+response.response.venues["0"].id);
-
-            var restaurants = [];
-
-            for(let i = 0; i < response.response.venues.length; i++){
-                console.log(i);
-                restaurants[i] = [];
-                restaurants[i][0] = response.response.venues[i].name;
-                restaurants[i][1] = response.response.venues[i].location.address;
-
-                if (response.response.venues[i].contact.formattedPhone !== "undefined"){
-                restaurants[i][2] = response.response.venues[i].contact.formattedPhone;                
+            let venues = response.response.venues, venueCount = 0;
+            for (let index of venues) if (index.contact.formattedPhone) venueCount++;
+            if (venueCount) {
+                $("#recipeHome").empty();
+                for (let index of venues) {
+                    if (index.contact.formattedPhone) {
+                        let div = $(`<div class="col-md-6 col-xs-12 rest-div">`), restName;
+                        restName = index.url && index.hasMenu 
+                            ? `<h3><a href=${index.url} target="_blank">${index.name}</a> (<a href=${index.menu.url} target="_blank">menu</a>)</h3>` 
+                            : index.url && !index.hasMenu
+                                ? `<h3><a href=${index.url} target="_blank">${index.name}</a></h3>`
+                                : !index.url && index.hasMenu
+                                    ? `<h3>${index.name} (<a href=${index.menu.url} target="_blank">menu</a>)</h3>`
+                                    : `<h3>${index.name}</h3>`;
+                        div.append(restName).append(`<h4>${index.location.address}<h4>`).append(`<h4>${index.contact.formattedPhone}<h4>`);
+                        $("#places").append(div);
+                    }
                 }
-
-                if ( response.response.venues[i].hasMenu == true){
-                restaurants[i][3] = response.response.venues[i].menu.url;                
-                }
-                else {restaurants[i][3] = ""}
-
-                restaurants[i][4] = response.response.venues[i].id;
-                restaurants[i][5] = getPhotoId(restaurants[i][4]);    
-           }; 
-
-           for(let i = 0; i < restaurants.length; i++){
-            var restaurantDiv = $("<div>");
-            var a = restaurants[i];
-            var restaurantHtmlString = a[0] + "<br>" + a[1] + "<br>" + a[2] + "<br>" + a[3];
-            restaurantDiv.append(restaurantHtmlString);
-            restaurantDiv.addClass("restaurantVenue");
-            $("#places").append(restaurantDiv);
-           }
-
-
-
-           console.log(restaurants);
+                document.getElementById("places").scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+            }
+            else {
+                $("#recipeHome").html(`<div class="col-xs-12"><h3>No restaurants found. Please try a different search!</h3></div>`);
+            }
         });
-
-
     }
 
-
-
-
-    emptyFields();
-    foursquareApi();
-
-});
-        function getPhotoId(venueId){
-            $.getJSON({
-            url: "https://api.foursquare.com/v2/venues/"+venueId+"/photos"
-        
-        }).done(function(pictureResponse){
-                console.log(pictureResponse);
-            }   
-    );
-    }
-    function emptyFields(){
+    $(document).on("click", "#takeIt", function() {
+        let userZip = $("#zipcode").val().trim(), userCuisineInput = $("#cuisineChoice").val();
         $("#places").empty();
-        // $("#zipcode").val("");
-    };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        validText(userZip, false)
+            ? ($("#recipeHome").html(`<div class="col-xs-12"><h3>Searching for restaurants<span class="ellipsis-anim"><span>.</span><span>.</span><span>.</span></span></h3></div>`), foursquareApi(userZip, userCuisineInput))
+            : $("#recipeHome").html(`<div class="col-xs-12"><h3>Please input a valid ZIP Code!</h3></div>`);
+    });
 
 
 });
