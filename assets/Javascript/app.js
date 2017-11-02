@@ -31,6 +31,9 @@ $(function(){
                 console.log(`Displaying search results #${math + 1}, #${math + 2}, #${math + 3}, and #${math + 4}.`);
                 for (let index of result) recipeReturn(index.id);
             }
+        })
+        .fail(function() {
+            $("#recipeHome").html(`<div class="col-xs-12"><h3>Search failed. Please try a different search!</h3></div>`);
         });
     }
 
@@ -76,6 +79,9 @@ $(function(){
             else {
                 $("#recipeHome").html(`<div class="col-xs-12"><h3>No restaurants found. Please try a different search!</h3></div>`);
             }
+        })
+        .fail(function() {
+            $("#recipeHome").html(`<div class="col-xs-12"><h3>Search failed. Please try a different search!</h3></div>`);
         });
     }
 
