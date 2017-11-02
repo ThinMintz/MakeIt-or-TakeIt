@@ -107,6 +107,7 @@ $(function(){
     });
 
     $(document).on("click", "#takeIt", function() {
+        event.preventDefault();
         $("#places").empty();
         let userZip = $("#zipcode").val().trim(), userCuisineInput = $("#cuisineChoice").val();
         validText(userZip, false)
