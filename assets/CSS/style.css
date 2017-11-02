@@ -31,10 +31,17 @@ button:focus {
 }
 
 #headerText, #summaryText {
-	background-color: black;
-	background-opacity:0.5%;
+	/*background-color: black;*/
+	/*opacity:0.5%;*/
 	text-align: center;
 	color: white;
+}
+
+#titleMake, #titleTake {
+	font-family:'League Script', cursive;
+	font-size: 30px;
+	text-align: center;
+	padding: 10px;
 }
 
 .jumbotron {
@@ -46,7 +53,7 @@ button:focus {
 
 #take-it {
 	padding: 10px;
-	margin-left: 20%;
+	margin-left: 40%;
 }
 
 .btn {

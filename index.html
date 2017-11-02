@@ -15,6 +15,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Dosis|Noto+Sans|Open+Sans|Quicksand|Source+Sans+Pro|Work+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Dawning+of+a+New+Day|Dosis|League+Script|Noto+Sans|Open+Sans|Quicksand|Source+Sans+Pro|Work+Sans" rel="stylesheet">
 	
 </head>
 <body>
@@ -33,8 +34,10 @@
 	    	<h1 id="headerText">Make it or Take it</h1>
 	    	<h3 id="summaryText">Can't decide what to eat? Choose a Cuisine and You can decide to make it OR take it!</h3>
 	  		<!-- </div> -->
-	  	</div>		
+	  	</div>
+
 	  	<div class="container">	
+	  		<h4 id="titleMake">make it</h4>
 	  		<div class="row" id="foodOptions">
 			<form>
 				<div class= "col-md-4">
@@ -89,13 +92,15 @@
     	</div>
     
 		<div class="container">
+		<h4 id="titleTake">take it</h4>
 			<div class= "row" id="take-it">
-				<div class="col-md-6" id="enterZip">
+				<div class="col-lg-12" id="enterZip">
 					<div class="input-group">
 					      <input type="text" class="form-control" id="zipcode" placeholder="Enter Zipcode Here">
 					</div>
-				</div>	 
-				<div class="col-md-6">
+<br> 					
+				<!-- </div> -->	 
+				<!-- <div class="col-md-6"> -->
 					<button id="takeIt" class="btn btn-primary" type="submit"><span>Take it!</span></button>				
 				</div>		
 			</div>	
