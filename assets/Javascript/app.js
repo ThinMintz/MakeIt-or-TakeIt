@@ -107,8 +107,8 @@ $(function(){
     });
 
     $(document).on("click", "#takeIt", function() {
-        let userZip = $("#zipcode").val().trim(), userCuisineInput = $("#cuisineChoice").val();
         $("#places").empty();
+        let userZip = $("#zipcode").val().trim(), userCuisineInput = $("#cuisineChoice").val();
         validText(userZip, false)
             ? ($("#recipeHome").html(`<div class="col-xs-12"><h3>Searching for restaurants<span class="ellipsis-anim"><span>.</span><span>.</span><span>.</span></span></h3></div>`), localStorage.setItem("zipCode", userZip), foursquareApi(userZip, userCuisineInput))
             : $("#recipeHome").html(`<div class="col-xs-12"><h3>Please input a valid ZIP Code!</h3></div>`);
