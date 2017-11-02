@@ -1,7 +1,11 @@
 $(function(){
 
-    //begin Alex's code
-    const yummlyID = "_app_id=3123c164", yummlyKey = "_app_key=0a453b6219d75c4f9b5bd7deafcd8724";
+    const yummlyID = "_app_id=3123c164", yummlyKey = "_app_key=0a453b6219d75c4f9b5bd7deafcd8724", foursqID = "MKSDIAW4TPUGKG2VZVL1AWA3Y0RRNE4IL1DBEGOUTE5V4GWD", foursqSecret = "QOSAAQPN015GOWGVZ5XOOCSE5LERPN5KBZRACT4DJNN1MBUG";
+
+    (function () {
+        let zipCode = localStorage.getItem("zipCode");
+        if (zipCode) $("#zipcode").attr("value", zipCode);
+    })();
 
     function recipeSearch(cuisine, course, ingredient, math) {
         let ingredientSearch = "";
@@ -43,42 +47,8 @@ $(function(){
         });
     }
 
-    function validText(text, string) {
-        let letters = string ? /^[A-Za-z '-]+$/ : /^[0-9]+$/;
-        return text.match(letters) && string 
-            ? true
-            : text.match(letters) && !string && (text).toString().length == 5
-                ? true
-                : false;
-    } 
-
-    $(document).on("click", "#makeIt", function() {
-        event.preventDefault();
-        $("#places").empty();
-        $("#recipeHome").html(`<div class="col-xs-12"><h3>Searching for recipes<span class="ellipsis-anim"><span>.</span><span>.</span><span>.</span></span></h3></div>`);
-        let cuisine = $("#cuisineChoice").val(), course = $("#courseChoice").val(), ingredient = $("#ingredientChoice").val(), math = ~~(Math.random() * 50);
-        validText(ingredient, true) 
-            ? (console.log(`New recipe search for ${cuisine} ${course.toLowerCase()} that contain ${ingredient}, starting from result #${math + 1}...`), ingredient = ingredient.toLowerCase())
-            : (console.log("Invalid ingredient; ignoring parameter."), console.log(`New recipe search for ${cuisine} ${course.toLowerCase()}, starting from result #${math + 1}...`), ingredient = false);
-        cuisine = cuisine.toLowerCase().replace(/\s+/g, '');
-        recipeSearch(cuisine, course, ingredient, math);
-    });
-
-    document.body.addEventListener("load", function(event){
-        if ($(event.target).attr("class") === "recipe-image") document.getElementById("recipeHome").scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
-    }, true);
-    //end Alex's code
-
-    //Will's coding portion
-
-    (function () {
-        let zipCode = localStorage.getItem("zipCode");
-        if (zipCode) $("#zipcode").attr("value", zipCode);
-    })();
-
     function foursquareApi(userZip, userCuisineInput){
-        let clientId = "MKSDIAW4TPUGKG2VZVL1AWA3Y0RRNE4IL1DBEGOUTE5V4GWD", clientSecret = "QOSAAQPN015GOWGVZ5XOOCSE5LERPN5KBZRACT4DJNN1MBUG",
-        queryURL = `https://api.foursquare.com/v2/venues/search?v=20161016&near=${userZip}&query=${userCuisineInput}food&intent=checkin&limit=10&client_id=${clientId}&client_secret=${clientSecret}`;
+        let queryURL = `https://api.foursquare.com/v2/venues/search?v=20161016&near=${userZip}&query=${userCuisineInput}food&intent=checkin&limit=10&client_id=${foursqID}&client_secret=${foursqSecret}`;
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -109,6 +79,27 @@ $(function(){
         });
     }
 
+    function validText(text, string) {
+        let letters = string ? /^[A-Za-z '-]+$/ : /^[0-9]+$/;
+        return text.match(letters) && string 
+            ? true
+            : text.match(letters) && !string && (text).toString().length == 5
+                ? true
+                : false;
+    } 
+
+    $(document).on("click", "#makeIt", function() {
+        event.preventDefault();
+        $("#places").empty();
+        $("#recipeHome").html(`<div class="col-xs-12"><h3>Searching for recipes<span class="ellipsis-anim"><span>.</span><span>.</span><span>.</span></span></h3></div>`);
+        let cuisine = $("#cuisineChoice").val(), course = $("#courseChoice").val(), ingredient = $("#ingredientChoice").val(), math = ~~(Math.random() * 50);
+        validText(ingredient, true) 
+            ? (console.log(`New recipe search for ${cuisine} ${course.toLowerCase()} that contain ${ingredient}, starting from result #${math + 1}...`), ingredient = ingredient.toLowerCase())
+            : (console.log("Invalid ingredient; ignoring parameter."), console.log(`New recipe search for ${cuisine} ${course.toLowerCase()}, starting from result #${math + 1}...`), ingredient = false);
+        cuisine = cuisine.toLowerCase().replace(/\s+/g, '');
+        recipeSearch(cuisine, course, ingredient, math);
+    });
+
     $(document).on("click", "#takeIt", function() {
         let userZip = $("#zipcode").val().trim(), userCuisineInput = $("#cuisineChoice").val();
         $("#places").empty();
@@ -116,6 +107,9 @@ $(function(){
             ? ($("#recipeHome").html(`<div class="col-xs-12"><h3>Searching for restaurants<span class="ellipsis-anim"><span>.</span><span>.</span><span>.</span></span></h3></div>`), localStorage.setItem("zipCode", userZip), foursquareApi(userZip, userCuisineInput))
             : $("#recipeHome").html(`<div class="col-xs-12"><h3>Please input a valid ZIP Code!</h3></div>`);
     });
-
+    
+    document.body.addEventListener("load", function(event){
+        if ($(event.target).attr("class") === "recipe-image") document.getElementById("recipeHome").scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+    }, true);
 
 });
