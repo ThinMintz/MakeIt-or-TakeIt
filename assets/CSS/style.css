@@ -42,7 +42,8 @@ button:focus {
 	font-family:'League Script', cursive;
 	font-size: 30px;
 	text-align: center;
-	padding: 10px;
+	padding: 10px 10px 0px 10px;
+	margin-bottom: 0px;
 }
 
 .jumbotron {
@@ -153,7 +154,6 @@ width: 200px; */
     -webkit-animation-delay: 0.2s;
     animation-delay: 0.2s;
 }
-
 
 @-webkit-keyframes ellipsis-dot {
       0% { opacity: 0; }
