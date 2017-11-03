@@ -19,30 +19,18 @@
 	
 </head>
 <body>
-
-	<!-- <div class="container">
-		
-		<div class="row">
-			<div class="col-lg-12" id="titleRow">
-			<span class="text-center" id="title">Make it or Take it</span>
-			</div>
-		</div> -->
-
-		<!-- <div class="jumbotron"> -->
-		<div class="jumbotron darken">
-	  		<!-- <div class="container"> -->
-	  		<!-- <div class="transbox"> -->
-	    	<h1 id="headerText">Make It or Take It</h1>
-	    	<h3 id="summaryText">Can't decide what to eat? Choose a cuisine and Make It OR Take It!</h3>
-	  		<!-- </div> -->
-	  <!-- 	</div> -->
-	  	</div>
-
-	  	<div class="container">	
-	  		<h4 id="titleMake">make it</h4>
-	  		<div class="row" id="foodOptions">
+	<!-- jumbotron with title -->
+	<div class="jumbotron darken">
+	    <h1 id="headerText">Make It or Take It</h1>
+	    <h3 id="summaryText">Can't decide what to eat? Choose a cuisine and Make It OR Take It!</h3>
+	</div>
+	<!--container with make it or take it drop downs and input fields-->
+	<div class="container">	
+	  	<h4 id="titleMake">make it</h4>
+	  	<div class="row" id="foodOptions">
 			<form>
 				<div class= "col-md-4">
+					<!-- cuisine drop down menu -->
 					<select id="cuisineChoice" class="form-control">
 					  <option>American</option>
 					  <option>Asian</option>
@@ -68,7 +56,7 @@
 					  <option>Thai</option>
 					</select>
 				</div>
-
+				<!-- dish type dropdown -->
 				<div class= "col-md-3">
 					<select id="courseChoice" class="form-control">
 						<option>Cocktails</option>
@@ -79,47 +67,46 @@
 						<option>Desserts</option>
 					</select>
 				</div>
-			
+				<!-- ingredient input field -->
 				<div class="col-md-3">
 				    <div class="input-group" id="ingredientSearch">
 				      <input type="text" class="form-control" id="ingredientChoice" placeholder="Search an Ingredient">
 					</div>
 				</div>	
-
+				<!-- make it button -->	
 				<div class="col-sm-2">
 					<button id="makeIt" class="btn btn-primary" type="submit"><span>Make it!</span></button>	      
 				</div>
 			</form>	
-			</div>	
-    	</div>
+		</div>	
+    </div>
     
-		<div class="container">
-
+	<div class="container">
 		<h4 id="titleTake">take it</h4>
 			<div class= "row" id="take-it">
+				<!-- enter zipcode input field -->
 				<form>
 					<div class="col-sm-10" id="enterZip">
 						<div class="input-group">
-						      <input type="text" class="form-control" id="zipcode" placeholder="Enter Zipcode Here">
+							<input type="text" class="form-control" id="zipcode" placeholder="Enter Zipcode Here">
 						</div>				
-					</div>	 
+					</div>
+					<!-- take it button -->
 					<div class="col-sm-2">
-						<button id="takeIt" class="btn btn-primary" type="submit"><span>Take it!</span></button>			
+						<button id="takeIt" class="btn btn-primary" type="submit"><span>Take it!</span></button>		
 					</div>
 				</form>	
 			</div>	
-		</div>		
-
+	</div>		
+		<!-- div where recipes pop up -->
 		<div class="container-fluid text-center">
 			<div id="recipeHome" class="row"></div>
 		</div>
-
+		<!-- div where restaurants pop up -->
 		<div class="container-fluid text-center">
 			<div id="places" class="row"></div>
 		</div>	
-
 	</div>
-
 
 	<script src="assets/Javascript/app.js" type="text/javascript"></script>
 
