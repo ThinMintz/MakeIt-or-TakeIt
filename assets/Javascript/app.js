@@ -10,7 +10,7 @@ $(function(){
     function recipeSearch(cuisine, course, ingredient, math) {
         let ingredientSearch = "";
         if (ingredient) ingredientSearch = `&allowedIngredient[]=${ingredient}`;
-        let queryURL = `http://api.yummly.com/v1/api/recipes?${yummlyID}&${yummlyKey}&requirePictures=true&maxResult=4&start=${math}&allowedCuisine[]=cuisine^cuisine-${cuisine}&allowedCourse[]=course^course-${course}${ingredientSearch}`;
+        let queryURL = `https://api.yummly.com/v1/api/recipes?${yummlyID}&${yummlyKey}&requirePictures=true&maxResult=4&start=${math}&allowedCuisine[]=cuisine^cuisine-${cuisine}&allowedCourse[]=course^course-${course}${ingredientSearch}`;
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -38,7 +38,7 @@ $(function(){
     }
 
     function recipeReturn(ID) {
-        let queryURL = `http://api.yummly.com/v1/api/recipe/${ID}?${yummlyID}&${yummlyKey}`;
+        let queryURL = `https://api.yummly.com/v1/api/recipe/${ID}?${yummlyID}&${yummlyKey}`;
         $.ajax({
             url: queryURL,
             method: "GET"
