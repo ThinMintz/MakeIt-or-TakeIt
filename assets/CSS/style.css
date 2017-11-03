@@ -1,6 +1,5 @@
 body {
 	font-family: 'Quicksand', sans-serif;
-
 }
 
 button:focus {
@@ -10,7 +9,6 @@ button:focus {
 #jumboText {
 	text-align: center;
 	color: white;
-	/*background-color: brown;*/
 }
 
 #titleRow {
