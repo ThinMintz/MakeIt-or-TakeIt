@@ -153,9 +153,7 @@ width: 200px; */
     -webkit-animation-delay: 0.2s;
     animation-delay: 0.2s;
 }
-#places {
-  display: inline-block;
-}
+
 
 @-webkit-keyframes ellipsis-dot {
       0% { opacity: 0; }
