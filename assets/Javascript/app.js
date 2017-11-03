@@ -14,7 +14,7 @@ $(function(){
         $.ajax({
             url: queryURL,
             method: "GET"
-        }).done(function(response) { 
+        }).done(function(response) {
             let result = response.matches;
             if (result.length < 4 && math) {
                 math = math - 10;
