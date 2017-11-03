@@ -1,5 +1,6 @@
 body {
 	font-family: 'Quicksand', sans-serif;
+	background-image: url("../Images/furley_bg_@2X.png");
 }
 
 button:focus {
@@ -48,7 +49,7 @@ button:focus {
 	background: url("../Images/veg.jpg");
 	background-size: 100%;
 	background-repeat: no-repeat;
-	height: 320px;
+	height: 310px;
 }
 
 .darken {
@@ -113,7 +114,7 @@ width: 200px; */
   right: 0;
 }
 
-.recipe-div, #restaurantVenue {
+.recipe-div, .rest-div, #restaurantVenue {
 	margin-top: 10px;
 	padding-bottom: 10px;
 }
