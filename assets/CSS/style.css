@@ -70,11 +70,15 @@ button:focus {
 	width: 200px;
 }
 
+/*button#takeIt.btn.btn-primary {
+	color: black;
+}*/
+
 .btn {
 /*   border-radius: 4px; */
 /*   background-color: #f4511e; */
 /*   border: none; */
-/*   color: #FFFFFF; */
+/*  color: white;*/ 
   text-align: center;
 /*   font-size: 28px;
 padding: 20px;
