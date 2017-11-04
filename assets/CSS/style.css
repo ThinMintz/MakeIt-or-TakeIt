@@ -62,13 +62,12 @@ button:focus {
 }
 
 #take-it {
-	width: 30%;
 	margin: 0 auto;
 	padding: 10px;
 }
 
 #enterZip {
-	width: 200px;
+	width: 100%;
 }
 
 .btn {
