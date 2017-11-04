@@ -1,6 +1,6 @@
 body {
 	font-family: 'Quicksand', sans-serif;
-
+	background: url("../Images/furley_bg_@2X.png");
 }
 
 button:focus {
