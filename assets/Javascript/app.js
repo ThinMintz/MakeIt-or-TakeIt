@@ -24,7 +24,7 @@ $(function(){
             }
             else if (result.length < 4 && !math) {
                 console.log("Search failed. No results found.");
-                $("#recipeHome").html(`<div class="col-xs-12"><h3>No recipes found. Please try a different ingredient!</h3></div>`);
+                searchAlert(`No recipes found. Please try a different ingredient!`);
             }
             else {
                 $("#recipeHome").empty();
@@ -33,7 +33,7 @@ $(function(){
             }
         })
         .fail(function() {
-            $("#recipeHome").html(`<div class="col-xs-12"><h3>Search failed. Please try a different search!</h3></div>`);
+            searchAlert(`Search failed. Please try a different search!`);
         });
     }
 
@@ -77,12 +77,17 @@ $(function(){
                 document.getElementById("places").scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
             }
             else {
-                $("#recipeHome").html(`<div class="col-xs-12"><h3>No restaurants found. Please try a different search!</h3></div>`);
+                searchAlert(`No restaurants found. Please try a different search!`);
             }
         })
         .fail(function() {
-            $("#recipeHome").html(`<div class="col-xs-12"><h3>Search failed. Please try a different search!</h3></div>`);
+            searchAlert(`Search failed. Please try a different search!`);
         });
+    }
+
+    function searchAlert(text) {
+        $("#recipeHome").html(`<div class="col-xs-12"><h3>${text}</h3></div>`);
+        document.getElementById("recipeHome").scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
     }
 
     function validText(text, string) {
@@ -97,7 +102,7 @@ $(function(){
     $(document).on("click", "#makeIt", function() {
         event.preventDefault();
         $("#places").empty();
-        $("#recipeHome").html(`<div class="col-xs-12"><h3>Searching for recipes<span class="ellipsis-anim"><span>.</span><span>.</span><span>.</span></span></h3></div>`);
+        searchAlert(`Searching for recipes<span class="ellipsis-anim"><span>.</span><span>.</span><span>.</span></span>`);
         let cuisine = $("#cuisineChoice").val(), course = $("#courseChoice").val(), ingredient = $("#ingredientChoice").val(), math = ~~(Math.random() * 50);
         validText(ingredient, true) 
             ? (console.log(`New recipe search for ${cuisine} ${course.toLowerCase()} that contain ${ingredient}, starting from result #${math + 1}...`), ingredient = ingredient.toLowerCase())
@@ -111,8 +116,8 @@ $(function(){
         $("#places").empty();
         let userZip = $("#zipcode").val().trim(), userCuisineInput = $("#cuisineChoice").val();
         validText(userZip, false)
-            ? ($("#recipeHome").html(`<div class="col-xs-12"><h3>Searching for restaurants<span class="ellipsis-anim"><span>.</span><span>.</span><span>.</span></span></h3></div>`), localStorage.setItem("zipCode", userZip), foursquareApi(userZip, userCuisineInput))
-            : $("#recipeHome").html(`<div class="col-xs-12"><h3>Please input a valid ZIP Code!</h3></div>`);
+            ? (searchAlert(`Searching for restaurants<span class="ellipsis-anim"><span>.</span><span>.</span><span>.</span></span>`), localStorage.setItem("zipCode", userZip), foursquareApi(userZip, userCuisineInput))
+            : searchAlert(`Please input a valid ZIP Code!`);
     });
     
     document.body.addEventListener("load", function(event){
