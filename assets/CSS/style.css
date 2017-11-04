@@ -1,6 +1,6 @@
 body {
 	font-family: 'Quicksand', sans-serif;
-	background-image: url("../Images/furley_bg_@2X.png");
+
 }
 
 button:focus {
@@ -10,6 +10,7 @@ button:focus {
 #jumboText {
 	text-align: center;
 	color: white;
+	/*background-color: brown;*/
 }
 
 #titleRow {
@@ -41,7 +42,6 @@ button:focus {
 	font-family:'League Script', cursive;
 	font-size: 30px;
 	text-align: center;
-	padding: 10px 10px 0px 10px;
 	margin-bottom: 0px;
 }
 
@@ -49,7 +49,7 @@ button:focus {
 	background: url("../Images/veg.jpg");
 	background-size: 100%;
 	background-repeat: no-repeat;
-	height: 310px;
+	height: 320px;
 }
 
 .darken {
@@ -71,15 +71,11 @@ button:focus {
 	width: 200px;
 }
 
-/*button#takeIt.btn.btn-primary {
-	color: black;
-}*/
-
 .btn {
 /*   border-radius: 4px; */
 /*   background-color: #f4511e; */
 /*   border: none; */
-/*  color: white;*/ 
+/*   color: #FFFFFF; */
   text-align: center;
 /*   font-size: 28px;
 padding: 20px;
@@ -114,7 +110,7 @@ width: 200px; */
   right: 0;
 }
 
-.recipe-div, .rest-div, #restaurantVenue {
+.recipe-div, #restaurantVenue {
 	margin-top: 10px;
 	padding-bottom: 10px;
 }
